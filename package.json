@@ -1,0 +1,36 @@
+{
+  "name": "holiday-api",
+  "version": "1.0.0",
+  "description": "A Node.js RESTful API for fetching and caching holiday data using Calendarific API",
+  "main": "index.js",
+  "scripts": {
+    "serve": "nodemon src/index.js",
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "holiday",
+    "API",
+    "Node.js",
+    "Express"
+  ],
+  "author": "Ammar Maqsood",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.4",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "node-cache": "^5.1.2",
+    "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "./coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  }
+}
