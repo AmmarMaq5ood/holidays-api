@@ -18,13 +18,18 @@ The Holiday API is a Node.js RESTful API for fetching and caching holiday data u
    cd holiday-api
 
 2. **Run the following command to install all necessary dependencies:**
+    ```bash
     npm install
 
 3. **Environment Variables**
-    Create a .env file in the root directory of the project and add your environment variables. For example: CALENDARIFIC_API_KEY=your_calendarific_api_key
+    Create a .env file in the root directory of the project and add your environment variables. For example: 
+    ```bash
+    CALENDARIFIC_API_KEY=your_calendarific_api_key
 
 4. **Start the Server**
-    Use *npm run serve* to start the server with nodemon
+    Use this command to start the server with nodemon
+    ```bash
+    npm run serve
 
 5. **Endpoints**
     *GET* /api/holidays: Fetch holidays for a specific country and year.
@@ -35,9 +40,12 @@ The Holiday API is a Node.js RESTful API for fetching and caching holiday data u
         e.g. "http://localhost:3000/api/holidays?country=US&year=2024"
 
     *GET* /api/countries: Fetch a list of countries.
+
         e.g. "http://localhost:3000/api/countries"
 
 6. **Testing**
     Run Tests
 
-    Use **npm run test** to run the tests with Jest: And a coverage report will be saved in the coverage directory.
+    Use the following to run the tests with Jest: And a coverage report will be saved in the coverage directory.
+    ```bash
+   npm run test
