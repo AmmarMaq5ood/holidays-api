@@ -10,15 +10,35 @@ router.get('/countries', async (req, res) => {
     const cachedData = cache.get(cacheKey);
 
     if (cachedData) {
-        return res.json(cachedData);
+        return res.status(200).json(cachedData);
     }
 
     try {
         const countries = await calendarificService.getCountries();
+
+        if (!Array.isArray(countries) || countries.length === 0) {
+            return res.status(404).json({ message: 'No countries data found' });
+        }
+
         cache.set(cacheKey, countries);
-        res.json(countries);
+        res.status(200).json(countries);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching countries', error: error.message });
+        if (error.response) {
+            return res.status(error.response.status).json({
+                message: 'Error fetching countries from API',
+                error: error.response.data.message || error.message,
+            });
+        } else if (error.request) {
+            return res.status(503).json({
+                message: 'No response received from Calendarific API',
+                error: 'Service Unavailable',
+            });
+        } else {
+            return res.status(500).json({
+                message: 'Unexpected error occurred',
+                error: error.message,
+            });
+        }
     }
 });
 
